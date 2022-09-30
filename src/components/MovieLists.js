@@ -7,6 +7,7 @@ export default function MovieLists() {
   const [data, setData] = useState([]);
   const [count, setCount] = useState(0);
   const [count1, setCount1] = useState(0);
+  const [buttonClicked, setButtonClicked] = useState();
 
   const getData = () => {
     fetch("movies.json", {
@@ -89,7 +90,6 @@ export default function MovieLists() {
                 );
               })
             : data &&
-              data.length > 0 &&
               data.map((item, index) => {
                 return (
                   <Card key={index} id={item.id}>
@@ -104,7 +104,11 @@ export default function MovieLists() {
                           <br></br>
                           <span>{item.category}</span>
                         </h3>
-                        <button onClick={e => handleDecrement(e.target.id)}>
+                        <button
+                          onClick={(e) => handleDecrement(e.target.button)}
+                          key={index}
+                          id={`${item.id}`}
+                        >
                           Dislikes:<i className="fa fa-thumbs-down"></i>{" "}
                           {item.dislikes + count1}
                         </button>

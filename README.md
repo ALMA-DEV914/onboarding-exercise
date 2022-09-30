@@ -2,6 +2,9 @@
 
 This is a typical create-react-app
 
+## The Demo Site
+[https://starlit-granita-3aa942.netlify.app/](https://starlit-granita-3aa942.netlify.app/)
+
 We want you to use the src/movies.js file and build a UI consuming this information on the front end.
 
 ### Expectations:
