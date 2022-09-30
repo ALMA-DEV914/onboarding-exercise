@@ -92,7 +92,7 @@ export default function MovieLists() {
               data.length > 0 &&
               data.map((item, index) => {
                 return (
-                  <Card key={index}>
+                  <Card key={index} id={item.id}>
                     <Card.Content>
                       <Card.Header>
                         {" "}
@@ -104,7 +104,7 @@ export default function MovieLists() {
                           <br></br>
                           <span>{item.category}</span>
                         </h3>
-                        <button onClick={handleDecrement}>
+                        <button onClick={e => handleDecrement(e.target.id)}>
                           Dislikes:<i className="fa fa-thumbs-down"></i>{" "}
                           {item.dislikes + count1}
                         </button>

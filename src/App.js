@@ -3,8 +3,8 @@ import "./App.css";
 import logo from "./queeery-logo.png";
 import MovieLists from "./components/MovieLists";
 
+
 function App() {
-  
   return (
     <>
       <div className="App">
@@ -16,6 +16,7 @@ function App() {
           </h1>
           <div className="container">
             <MovieLists />
+           
           </div>
         </header>
       </div>
