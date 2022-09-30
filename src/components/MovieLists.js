@@ -74,7 +74,8 @@ export default function MovieLists() {
                           <br></br>
                           <span>{item.category}</span>
                         </h3>
-                        <button onClick={handleDecrement}>
+
+                        <button onClick={handleIncrement}>
                           Dislikes: <i className="fa fa-thumbs-down"></i>
                           {item.dislikes + count1}
                         </button>

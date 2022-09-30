@@ -67,7 +67,15 @@
 .card img{
   width: 280px;
   height: 280px;
+  animation-name: fade;
+  animation-duration: 4s;
 }
+
+@keyframes fade {
+  from {width: 0px;}
+  to {width: 280px;}
+}
+
 .card button{
   float: right;
 }
