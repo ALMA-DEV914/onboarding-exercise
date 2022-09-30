@@ -7,8 +7,8 @@ export default function MovieLists() {
   const [data, setData] = useState([]);
   const [count, setCount] = useState(0);
   const [count1, setCount1] = useState(0);
+  const [buttons, setButtons] = useState([])
   
-
   const getData = () => {
     fetch("movies.json", {
       headers: {
@@ -45,16 +45,13 @@ export default function MovieLists() {
   };
 
   const handleIncrement = () => {
-    //selected.includes(id) ?
-    setCount(count + 1) //: null};
+    setCount(count + 1);
+    setButtons()
 }
   const handleDecrement = () => {
-    //selected.includes(id) ?
-    setCount1(count1 - 1) //: null};
+    setCount1(count1 - 1) 
   }
   
-  
-
 
   return (
     <div className="search-wrapper">
@@ -76,7 +73,8 @@ export default function MovieLists() {
                     <Card.Description>
                      <h3>{item.title}</h3>
                     </Card.Description>
-                    <button  onClick={() => handleIncrement(item.id)}>Likes: {item.likes + count}</button>
+                  
+                  <button onClick={handleIncrement}>Likes: {item.likes + count}</button>
                     <button  onClick={handleDecrement}>Dislikes: {item.dislikes + count1}</button>
                   </Card.Content>
                 </Card>
@@ -84,9 +82,9 @@ export default function MovieLists() {
             })
           : data &&
             data.length > 0 &&
-            data.map((item, id) => {
+            data.map((item, index) => {
               return (
-                <Card key={id}>
+                <Card key={index} id={`${item.id}`}>
                   <Card.Content>
                     <Card.Header>
                       {" "}
@@ -95,7 +93,7 @@ export default function MovieLists() {
                     <Card.Description>
                       <h3>{item.title}</h3>
                     </Card.Description>
-                   <button  onClick={handleIncrement} >Likes: {item.likes + count}</button>
+                   <button key={index} onClick={handleIncrement}>Likes:{item.likes + count}</button> {" "}
                     <button  onClick={handleDecrement}>Dislikes: {item.dislikes + count1}</button>
                   </Card.Content>
                 </Card>
