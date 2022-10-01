@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Card, Input } from "semantic-ui-react";
+import SearchResults from "./ListComponent";
 
 export default function MovieLists() {
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [data, setData] = useState([]);
-  const [count, setCount] = useState(0);
-  const [count1, setCount1] = useState(0);
-  const [buttonClicked, setButtonClicked] = useState();
 
   const getData = () => {
     fetch("movies.json", {
@@ -44,13 +42,6 @@ export default function MovieLists() {
     }
   };
 
-  const handleIncrement = () => {
-    setCount(count + 1);
-  };
-  const handleDecrement = () => {
-    setCount1(count1 - 1);
-  };
-
   return (
     <div className="search-wrapper">
       <Input
@@ -62,65 +53,8 @@ export default function MovieLists() {
       <div className="container">
         <Card.Group className="row">
           {searchInput.length > 1
-            ? filteredResults.map((item) => {
-                return (
-                  <Card>
-                    <Card.Content>
-                      <Card.Header>
-                        <img src={item.url} alt="item.title" />
-                      </Card.Header>
-                      <Card.Description>
-                        <h3>
-                          {item.title}
-                          <br></br>
-                          <span>{item.category}</span>
-                        </h3>
-
-                        <button onClick={handleIncrement}>
-                          Dislikes: <i className="fa fa-thumbs-down"></i>
-                          {item.dislikes + count1}
-                        </button>
-                        <button onClick={handleIncrement}>
-                          Likes:<i className="fa fa-thumbs-up"></i>{" "}
-                          {item.likes + count}
-                        </button>
-                      </Card.Description>
-                    </Card.Content>
-                  </Card>
-                );
-              })
-            : data &&
-              data.map((item, index) => {
-                return (
-                  <Card key={index} id={item.id}>
-                    <Card.Content>
-                      <Card.Header>
-                        {" "}
-                        <img src={item.url} alt="item.title" />
-                      </Card.Header>
-                      <Card.Description>
-                        <h3>
-                          {item.title}
-                          <br></br>
-                          <span>{item.category}</span>
-                        </h3>
-                        <button
-                          onClick={(e) => handleDecrement(e.target.button)}
-                          key={index}
-                          id={`${item.id}`}
-                        >
-                          Dislikes:<i className="fa fa-thumbs-down"></i>{" "}
-                          {item.dislikes + count1}
-                        </button>
-                        <button onClick={handleIncrement}>
-                          Likes:<i className="fa fa-thumbs-up"></i>{" "}
-                          {item.likes + count}
-                        </button>{" "}
-                      </Card.Description>
-                    </Card.Content>
-                  </Card>
-                );
-              })}
+            ? filteredResults.map((item) => <SearchResults item={item} />)
+            : data && data.map((item) => <SearchResults item={item} />)}
         </Card.Group>
       </div>
     </div>

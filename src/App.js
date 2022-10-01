@@ -12,11 +12,11 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           <h1>
             Welcome to Your Movies HotSpot<br></br>
-            <span className="header-span">Brought to you by Queery</span>
+            <span className="header-span">Brought to you by Queeery</span>
           </h1>
           <div className="container">
             <MovieLists />
-           
+            
           </div>
         </header>
       </div>
